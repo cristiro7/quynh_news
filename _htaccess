@@ -1,0 +1,23 @@
+RewriteEngine On
+
+ErrorDocument 404 http://thegioinongsan.com.vn/404.php
+
+#DirectoryIndex index.htm [L]
+
+DirectoryIndex	index.php	[L]
+
+RewriteRule ^admin/(.*) admin/$1 [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?com=type&id=$1  [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+).html$ index.php?com=$1  [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/$	index.php?com=$1 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/p=([0-9]+)$	index.php?com=$1&p=$2 [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+).html$	index.php?com=$1&id=$2 [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$	index.php?com=$1&idl=$2 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/p=([0-9]+)$	index.php?com=$1&idl=$2&p=$3 [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$	index.php?com=$1&idl=$2&idc=$3 [L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/p=([0-9]+)$	index.php?com=$1&idl=$2&idc=$3&p=$4 [L]

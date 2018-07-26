@@ -1,0 +1,10 @@
+/* 
+ * Only for login page
+ * ----------------------------------------------------- */
+.panel-heading{position: relative;}
+
+p.loading{display: none;position: absolute;}
+p.loading.normal{width: 24px;height: 24px;background: url(../images/loading-normal.gif) center center;top: 8px;right: 15px;}
+p.loading.large{width: 32px;height: 32px;background: url(../images/loading-large.gif) center center;top: 3px;right: 15px;}
+p.message{display: none;font-family: inherit; font-size: 12px;font-style: italic; color: #f00;margin: 10px 0px 0px;}
+p.message.error{margin: 0px 0px 10px;}

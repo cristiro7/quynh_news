@@ -1,0 +1,3 @@
+RewriteEngine On
+DirectoryIndex	login.php	[L]
+RewriteRule ^admin/(.*) admin/$1 [L]
