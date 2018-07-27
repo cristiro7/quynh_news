@@ -10,39 +10,38 @@
 			<meta property="og:url" content="http://'.$config_url.'/"/>
 			<meta property="og:description" content="'.strip_tags($setting['title_'.$lang]).'" />';
 
-    //Lay cac san pham ua chuong cho hien thi index
-    $sql = "select id, ten_$lang as ten, tenkodau, price, sale, unit, shows_new, shows_sale, mota_$lang as mota, thumb2, alt from #_product where shows=1 and shows_like=1 order by numberic asc,id desc";
+    // Get news popular
+    $sql = "select id, ten_$lang as ten, tenkodau, thumb1, alt, date_create from #_news where shows=1 and shows_popular=1 order by numberic asc,id desc limit 0,3";
     $d->query($sql);
-    $products_like = $d->result_array();
+    $news_popular = $d->result_array();
 
-    $curPage = isset($_GET['p']) ? $_GET['p'] : '1';
-	$url = "http://$config_url/home/";
-	$maxR=24;
-	$maxP=10;
-	$paging=paging_home($products_like, $url, $curPage, $maxR, $maxP);
-	$products_like=$paging['source'];
+	// Get news hot
+	$sql = "select id, ten_$lang as ten, tenkodau, thumb1, alt, date_create from #_news where shows=1 and shows_hot=1 order by numberic asc,id desc limit 0,3";
+	$d->query($sql);
+	$news_hot = $d->result_array();
 
-    //Lay cac san pham moi cho hien thi index
-    $sql = "select id, ten_$lang as ten, tenkodau, price, sale, unit, shows_new, shows_sale, mota_$lang as mota, thumb2, alt from #_product where shows=1 and shows_new=1 order by numberic asc,id desc";
-    $d->query($sql);
-    $products_new = $d->result_array();
+	// Get page (news_list)
+	$sql = "select id, ten_$lang as ten, tenkodau, mota_$lang as mota, thumb1, thumb2, alt, date_create from #_news where id_list=1 and shows=1 order by numberic asc,id desc";
+	$d->query($sql);
+	$news_of_page_list = $d->result_array();
 
-    $curPage = isset($_GET['p']) ? $_GET['p'] : '1';
-	$url = "http://$config_url/home/";
-	$maxR=24;
-	$maxP=10;
-	$paging=paging_home($products_new, $url, $curPage, $maxR, $maxP);
-	$products_new=$paging['source'];
+	// Get world (news_list) Block 1
+	$sql = "select id, ten_$lang as ten, tenkodau, mota_$lang as mota, thumb1, thumb2, alt, date_create from #_news where id_list=1 and shows=1 order by numberic asc,id desc limit 0,4";
+	$d->query($sql);
+	$news_of_world_list_block1 = $d->result_array();
 
-    //Lay cac san pham ban chay cho hien thi index
-    $sql = "select id, ten_$lang as ten, tenkodau, price, sale, unit, shows_new, shows_sale, mota_$lang as mota, thumb2, alt from #_product where shows=1 and shows_top=1 order by numberic asc,id desc";
-    $d->query($sql);
-    $products_top = $d->result_array();
+	// Get world (news_list) Block 2
+	$sql = "select id, ten_$lang as ten, tenkodau, mota_$lang as mota, thumb1, thumb2, alt, date_create from #_news where id_list=1 and shows=1 order by numberic asc,id desc limit 5,8";
+	$d->query($sql);
+	$news_of_world_list_block2 = $d->result_array();
 
-    $curPage = isset($_GET['p']) ? $_GET['p'] : '1';
-	$url = "http://$config_url/home/";
-	$maxR=24;
-	$maxP=10;
-	$paging=paging_home($products_top, $url, $curPage, $maxR, $maxP);
-	$products_top=$paging['source'];
+	// Get business (news_list)
+	$sql = "select id, ten_$lang as ten, tenkodau, mota_$lang as mota, thumb1, thumb2, alt, date_create from #_news where id_list=3 and shows=1 order by numberic asc,id desc limit 0,3";
+	$d->query($sql);
+	$news_of_business_list = $d->result_array();
+
+	// Get sport (news_list)
+	$sql = "select id, ten_$lang as ten, tenkodau, mota_$lang as mota, thumb1, thumb2, alt, date_create from #_news where id_list=5 and shows=1 order by numberic asc,id desc limit 0,3";
+	$d->query($sql);
+	$news_of_sport_list = $d->result_array();
 ?>

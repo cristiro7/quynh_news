@@ -7,7 +7,7 @@
     
     $sql="SELECT * FROM $tbl_name WHERE session='$session'";
     $result=$d->query($sql);
-    $count=mysql_num_rows($result);
+    $count=mysqli_num_rows($result);
     
     if($count=="0"){
         $sql1="INSERT INTO $tbl_name(session, time,	ip )VALUES('$session', '$time','$ip')";
@@ -19,7 +19,7 @@
     
     $sql3="SELECT * FROM $tbl_name";
     $result3=$d->query($sql3);
-    $count_user_online=mysql_num_rows($result3);
+    $count_user_online=mysqli_num_rows($result3);
     
     // Nếu quá 10 phút mà ko thấy session này làm việc thì tiến hành xóa
     $sql4="DELETE FROM $tbl_name WHERE time<$time_check";

@@ -755,6 +755,6 @@ function countPhoto($id=0){
     global $d;
     $sql = "select id from #_news_photo where id_news=$id and shows<>0";
     $result=$d->query($sql);
-    return mysql_num_rows($result);
+    return mysqli_num_rows($result);
 }
 ?>
