@@ -5,7 +5,7 @@
         <ul class="block">
             <?php foreach ($news_popular as $new_popular) { ?>
             <li>
-                <a href="http://<?=$config_url.'/tin-tuc/'.$new_popular['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_popular['thumb1']?>" alt="<?=$new_popular['alt']?>" class="alignleft" width="160" /></a>
+                <a href="http://<?=$config_url.'/tin-tuc/'.$new_popular['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_popular['thumb']?>" alt="<?=$new_popular['alt']?>" class="alignleft" width="140" /></a>
                 <p>
                     <span><?php echo date('d M, Y', $new_popular['date_create']); ?></span>
                     <a href="http://<?=$config_url.'/tin-tuc/'.$new_popular['tenkodau']?>.html"><?=$new_popular['ten']?></a>
@@ -26,7 +26,7 @@
         <ul class="block">
             <?php foreach ($news_hot as $new_hot) { ?>
                 <li>
-                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_hot['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_hot['thumb1']?>" alt="<?=$new_hot['alt']?>" class="alignleft" width="150" /></a>
+                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_hot['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_hot['thumb']?>" alt="<?=$new_hot['alt']?>" class="alignleft" width="150" /></a>
                     <p>
                         <span><?php echo date('d M, Y', $new_hot['date_create']); ?></span>
                         <a href="http://<?=$config_url.'/tin-tuc/'.$new_hot['tenkodau']?>.html"><?=$new_hot['ten']?></a>
@@ -51,7 +51,7 @@
     </h5>
 
     <div class="outertight">
-        <img src="http://<?=$config_url.'/'._upload_news_l.$news_of_page_list[0]['thumb2']?>" alt="<?=$news_of_page_list[0]['alt']?>" />
+        <img src="http://<?=$config_url.'/'._upload_news_l.$news_of_page_list[0]['thumb1']?>" alt="<?=$news_of_page_list[0]['alt']?>" />
         <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$news_of_page_list[0]['tenkodau']?>.html"><?=$news_of_page_list[0]['ten']?></a></h6>
         <span class="meta"><?php echo date('d M, Y', $news_of_page_list[0]['date_create']); ?></span>
         <p><?=$news_of_page_list[0]['mota']?>...</p>
@@ -63,10 +63,10 @@
                 if ($key == 0) { continue; }
             ?>
             <li>
-                <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_page_list['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_page_list['thumb1']?>" alt="<?=$new_of_page_list['alt']?>" class="alignleft" width="140" /></a>
+                <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_page_list['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_page_list['thumb']?>" alt="<?=$new_of_page_list['alt']?>" class="alignleft" width="140" /></a>
                 <p>
                     <span><?php echo date('d M, Y', $new_of_page_list['date_create']); ?>.</span>
-                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_page_list['tenkodau']?>.html"><?=$new_of_page_list['ten']?></a>
+                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_page_list['tenkodau']?>.html"><?=summary($new_of_page_list['ten'], 70)?></a>
                 </p>
 <!--                <span class="rating"><span style="width:80%;"></span></span>-->
             </li>
@@ -93,7 +93,7 @@
                 <img src="http://<?=$config_url.'/'._upload_news_l.$new_of_world_list_block1['thumb1']?>" alt="<?=$new_of_world_list_block1['alt']?>" class="alignleft" />
                 <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$new_of_world_list_block1['tenkodau']?>.html"><?=$new_of_world_list_block1['ten']?></a></h6>
                 <span class="meta"><?php echo date('d M, Y', $new_of_world_list_block1['date_create']); ?>.</span>
-                <p><?=$new_of_world_list_block1['mota']?>...</p>
+                <p><?=summary($new_of_world_list_block1['mota'], 200)?>...</p>
             </li>
             <?php } ?>
         </ul>
@@ -103,12 +103,12 @@
         <ul class="block2">
             <?php foreach ($news_of_world_list_block2 as $new_of_world_list_block2) { ?>
             <li>
-                <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_world_list_block2['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_world_list_block2['thumb1']?>" alt="<?=$new_of_world_list_block2['alt']?>" class="alignleft" width="140" /></a>
+                <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_world_list_block2['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_world_list_block2['thumb']?>" alt="<?=$new_of_world_list_block2['alt']?>" class="alignleft" width="140" /></a>
                 <p>
                     <span><?php echo date('d M, Y', $new_of_world_list_block2['date_create']); ?>.</span>
                     <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_world_list_block2['tenkodau']?>.html"><?=$new_of_world_list_block2['ten']?></a>
                 </p>
-<!--                <span class="rating"><span style="width:80%;"></span></span>-->
+                <!--<span class="rating"><span style="width:80%;"></span></span>-->
             </li>
             <?php } ?>
         </ul>
@@ -125,14 +125,15 @@
             <div class="flexslider">
                 <ul class="slides">
                     <li>
-                        <img src="img/trash/25.png" alt="MyPassion" />
+                        <img src="http://<?=$config_url.'/'._upload_news_l.$news_of_business_list[0]['thumb1']?>" alt="<?=$news_of_business_list[0]['alt']?>" />
                     </li>
+                    <?php if (!empty($news_thumb_related = getThumbNews($news_of_business_list[0]['id']))) {
+                        foreach ($news_thumb_related as $new_thumb_related) {
+                    ?>
                     <li>
-                        <img src="img/trash/24.png" alt="MyPassion" />
+                        <img src="http://<?=$config_url.'/'._upload_news_l.$new_thumb_related['thumb1']?>" alt="<?=$new_thumb_related['alt']?>" />
                     </li>
-                    <li>
-                        <img src="img/trash/26.png" alt="MyPassion" />
-                    </li>
+                    <?php } } ?>
                 </ul>
             </div>
 
@@ -144,22 +145,18 @@
         </div>
 
         <ul class="block">
-            <li>
-                <a href="#"><img src="img/trash/21.png" alt="MyPassion" class="alignleft" /></a>
-                <p>
-                    <span>26 May, 2013.</span>
-                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                </p>
-                <span class="rating"><span style="width:80%;"></span></span>
-            </li>
-            <li>
-                <a href="#"><img src="img/trash/20.png" alt="MyPassion" class="alignleft" /></a>
-                <p>
-                    <span>26 May, 2013.</span>
-                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                </p>
-                <span class="rating"><span style="width:100%;"></span></span>
-            </li>
+            <?php foreach ($news_of_business_list as $key => $new_of_business_list) {
+                if ($key == 0) { continue; }
+            ?>
+                <li>
+                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_business_list['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_business_list['thumb']?>" alt="<?=$new_of_business_list['alt']?>" class="alignleft" width="140" /></a>
+                    <p>
+                        <span><?php echo date('d M, Y', $new_of_business_list['date_create']); ?>.</span>
+                        <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_business_list['tenkodau']?>.html"><?=$new_of_business_list['ten']?></a>
+                    </p>
+                    <!--<span class="rating"><span style="width:80%;"></span></span>-->
+                </li>
+            <?php } ?>
         </ul>
     </div>
 
@@ -189,24 +186,19 @@
         </div>
 
         <ul class="block">
-            <li>
-                <a href="#"><img src="img/trash/23.png" alt="MyPassion" class="alignleft" /></a>
-                <p>
-                    <span>26 May, 2013.</span>
-                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                </p>
-                <span class="rating"><span style="width:80%;"></span></span>
-            </li>
-            <li>
-                <a href="#"><img src="img/trash/22.png" alt="MyPassion" class="alignleft" /></a>
-                <p>
-                    <span>26 May, 2013.</span>
-                    <a href="#">Blandit Rutrum, Erat et Sagittis.</a>
-                </p>
-                <span class="rating"><span style="width:100%;"></span></span>
-            </li>
+            <?php foreach ($news_of_sport_list as $key => $new_of_sport_list) {
+                if ($key == 0) { continue; }
+            ?>
+                <li>
+                    <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_sport_list['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new_of_sport_list['thumb']?>" alt="<?=$new_of_sport_list['alt']?>" class="alignleft" width="140" /></a>
+                    <p>
+                        <span><?php echo date('d M, Y', $new_of_sport_list['date_create']); ?>.</span>
+                        <a href="http://<?=$config_url.'/tin-tuc/'.$new_of_sport_list['tenkodau']?>.html"><?=$new_of_sport_list['ten']?></a>
+                    </p>
+                    <!--<span class="rating"><span style="width:80%;"></span></span>-->
+                </li>
+            <?php } ?>
         </ul>
     </div>
-
 </div>
 <!-- /Popular News -->

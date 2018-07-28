@@ -14,8 +14,28 @@
     include_once _lib."functions.php";
     include_once _lib."functions_giohang.php";
     include_once _lib."class.database.php";
-    include_once _lib."file_requick.php";
+    $d = new database($config['database']);
+
+    $sql = "select * from #_setting limit 0,1";
+    $d->query($sql);
+    $setting= $d->fetch_array();
+
+    $sql = "select * from #_info limit 0,1";
+    $d->query($sql);
+    $info= $d->fetch_array();
+
+    $lang=$setting['lang'];
+    $lang_arr=array("vi","en");
+    if(isset($_GET['lang']) == true){
+        if (in_array($_GET['lang'], $lang_arr)==true){$lang = $_GET['lang'];}
+    }
+
+    $title = $setting['title_'.$lang];
+    $description = $setting['description_'.$lang];
+    $keywords = $setting['keywords_'.$lang];
+
     require_once _source."lang_$lang.php";
+    include_once _lib."file_requick.php";
     include_once _source."counter.php";
     include_once _source."useronline.php";
 ?>
@@ -78,7 +98,7 @@
                         <?php if($com != '' && $com != 'trang-chu') { ?>
                         <!-- Breadcrumbs -->
                         <div class="breadcrumbs column">
-                            <p><a href="#">Home.</a>   \\   <a href="#">World News.</a>   \\   Single.</p>
+                            <?=$breadcrumbs?>
                         </div>
                         <!-- Breadcrumbs -->
                         <?php } ?>

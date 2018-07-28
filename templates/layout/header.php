@@ -1,15 +1,14 @@
 <?php
-    $active = "current-menu-item page_item current_page_item";
-    //Lay danh muc san pham
-    $sql = "select id, ten_$lang as ten, tenkodau from #_product_list where shows=1 order by numberic asc,id desc";
+    // Get news list
+    $sql = "select id, ten_$lang as ten, tenkodau from #_news_list where shows=1 and shows_menu=1 order by numberic asc,id desc";
     $d->query($sql);
-    $products_header = $d->result_array();
+    $news_list_header = $d->result_array();
 ?>
 
 <div class="container">
     <div class="column">
         <div class="logo">
-            <a href="index.html"><img src="img/logo.png" alt="MyPassion" /></a>
+            <a href="index.html"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$setting['logo']?>" alt="<?=$setting['ten_'.$lang]?>" /></a>
         </div>
 
         <div class="search">
@@ -22,37 +21,23 @@
         <!-- Nav -->
         <nav id="nav">
             <ul class="sf-menu">
-                <li class="current"><a href="index.html">Home.</a></li>
-                <li>
-                    <a href="#">Pages.</a>
-                    <ul>
-                        <li><i class="icon-right-open"></i><a href="leftsidebar.html">Left Sidebar.</a></li>
-                        <li><i class="icon-right-open"></i><a href="reviews.html">Reviews.</a></li>
-                        <li><i class="icon-right-open"></i><a href="single.html">Single News.</a></li>
-                        <li><i class="icon-right-open"></i><a href="features.html">Features.</a></li>
-                        <li><i class="icon-right-open"></i><a href="contact.html">Contact.</a></li>
-                    </ul>
-                </li>
-                <li><a href="reviews.html">World.</a></li>
-                <li><a href="reviews.html">Business.</a></li>
-                <li><a href="reviews.html">Politics.</a></li>
-                <li>
-                    <a href="reviews.html">Sports.</a>
-                    <ul>
-                        <li><i class="icon-right-open"></i><a href="#">Football.</a></li>
-                        <li><i class="icon-right-open"></i><a href="#">Running.</a></li>
-                        <li><i class="icon-right-open"></i><a href="#">Tennis.</a></li>
-                        <li><i class="icon-right-open"></i><a href="#">Fitness.</a></li>
-                        <li><i class="icon-right-open"></i><a href="#">Golf.</a></li>
-                        <li><i class="icon-right-open"></i><a href="#">Motosport.</a></li>
-                    </ul>
-                </li>
-                <li><a href="reviews.html">Health.</a></li>
-                <li><a href="reviews.html">Science.</a></li>
-                <li><a href="reviews.html">Music.</a></li>
-                <li><a href="reviews.html">Tech.</a></li>
-            </ul>
+                <li <?php if($com == '' || $com == 'trang-chu') { echo 'class="current"'; } ?>><a href="http://<?=$config_url?>/">Home.</a></li>
+<!--                <li>-->
+<!--                    <a href="#">Pages.</a>-->
+<!--                    <ul>-->
+<!--                        <li><i class="icon-right-open"></i><a href="leftsidebar.html">Left Sidebar.</a></li>-->
+<!--                        <li><i class="icon-right-open"></i><a href="reviews.html">Reviews.</a></li>-->
+<!--                        <li><i class="icon-right-open"></i><a href="single.html">Single News.</a></li>-->
+<!--                        <li><i class="icon-right-open"></i><a href="features.html">Features.</a></li>-->
+<!--                        <li><i class="icon-right-open"></i><a href="contact.html">Contact.</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <?php foreach ($news_list_header as $new_list_header) { ?>
+                <li <?php if($idl == $new_list_header['tenkodau']) { echo 'class="current"'; } ?>><a href="http://<?=$config_url.'/tin-tuc/'.$new_list_header['tenkodau']?>/"><?=$new_list_header['ten']?></a></li>
+                <?php } ?>
 
+                <li <?php if($com == 'lien-he') { echo 'class="current"'; } ?>><a href="http://<?=$config_url?>/lien-he/">Contact.</a></li>
+            </ul>
         </nav>
         <!-- /Nav -->
     </div>

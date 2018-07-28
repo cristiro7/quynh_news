@@ -92,6 +92,7 @@ function save_data(){
 	$data['website'] = isset($_POST['website']) ? $_POST['website'] : "";
 	$data['fanpage'] = isset($_POST['fanpage']) ? $_POST['fanpage'] : "";
 	$data['copy_right'] = isset($_POST['copy_right']) ? $_POST['copy_right'] : "";
+    $data['vimeo_video'] = isset($_POST['vimeo_video']) ? $_POST['vimeo_video'] : "";
 	
     $data['popup_link'] = isset($_POST['popup_link']) ? $_POST['popup_link'] : "";
     $data['popup_title'] = isset($_POST['popup_title']) ? $_POST['popup_title'] : "";

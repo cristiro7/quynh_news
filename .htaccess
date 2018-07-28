@@ -1,6 +1,6 @@
 RewriteEngine On
 
-ErrorDocument 404 http://thegioinongsan.com.vn/404.php
+ErrorDocument 404 http://news.com.vn/404.php
 
 #DirectoryIndex index.htm [L]
 

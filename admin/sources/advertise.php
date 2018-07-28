@@ -49,6 +49,26 @@ function get_items(){
 			$resultUPDATE = mysql_query($sqlUPDATE) or die("Not query sqlUPDATE");
 		}	
 	}
+
+    if(isset($_REQUEST['shows_single']) && $_REQUEST['shows_single']!='')
+    {
+        $ids = $_REQUEST['shows_single'];
+        $sql = "select shows_single from table_advertise where id=$ids";
+        $d->query($sql);
+        $cat= $d->fetch_array();
+        $shows=$cat['shows_single'];
+        if($shows==0)
+        {
+            $sqlUPDATE = "update table_advertise set shows_single = 1 where id=$ids";
+            $resultUPDATE = mysql_query($sqlUPDATE) or die("Not query sqlUPDATE");
+        }
+        else
+        {
+            $sqlUPDATE = "update table_advertise set shows_single = 0 where id=$ids";
+            $resultUPDATE = mysql_query($sqlUPDATE) or die("Not query sqlUPDATE");
+        }
+    }
+
 	$d->reset();
 	$sql = "select * from #_advertise where id!=0";
 	

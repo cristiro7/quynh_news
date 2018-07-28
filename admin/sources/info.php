@@ -21,16 +21,21 @@ function get_data(){
 	$sql = "select * from #_info limit 0,1";
 	$d->query($sql);
 	$item = $d->fetch_array();
+
+    if ($item['mainkey']) {
+        $item['mainkey'] = json_decode($item['mainkey']);
+    }
 }
 
 function save_data(){
 	global $d;
 	
 	if(isset($_POST) && empty($_POST)) transfer("Không nhận được dữ liệu", "index.php?com=info&act=edit");
-	    
+
+    $data['about'] = isset($_POST['about']) ? $_POST['about'] : "";
 	$data['contact'] = isset($_POST['contact']) ? $_POST['contact'] : "";
 	$data['footer'] = isset($_POST['footer']) ? $_POST['footer'] : "";
-    $data['certificate_quality'] = isset($_POST['certificate_quality']) ? $_POST['certificate_quality'] : "";
+//    $data['mainkey'] = isset($_POST['mainkey']) ? json_encode($_POST['mainkey']) : "";
 	
 	$d->reset();
 	$d->setTable('info');

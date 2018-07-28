@@ -21,6 +21,7 @@
 								<th style="width: 15%;" >Hình ảnh</th>
 								<th style="width: 15%;" >Link</th>
 								<th style="width: 8%;">Hiển thị</th>
+                                <th style="width: 8%;">Hiển ở vị trí dưới</th>
 								<th style="width: 4%;">Sửa</th>
 								<th style="width: 4%;">Xóa</th>
 							</tr>
@@ -40,6 +41,13 @@
 									<a href="http://<?=$config_url?>/admin/index.php?com=advertise&act=man&shows=<?=$items[$i-1]['id']?>"><i class="fa fa-square-o fa-lg"></i></a>
 								<?php } ?>
 								</td>
+                                <td>
+                                    <?php if($items[$i-1]['shows_single']==1){?>
+                                        <a href="http://<?=$config_url?>/admin/index.php?com=advertise&act=man&shows_single=<?=$items[$i-1]['id']?>"><i class="fa fa-check-square-o fa-lg"></i></a>
+                                    <?php }else{?>
+                                        <a href="http://<?=$config_url?>/admin/index.php?com=advertise&act=man&shows_single=<?=$items[$i-1]['id']?>"><i class="fa fa-square-o fa-lg"></i></a>
+                                    <?php } ?>
+                                </td>
 								<td><a href="http://<?=$config_url?>/admin/index.php?com=advertise&act=edit&id=<?=$items[$i-1]['id']?>" ><i class="fa fa-pencil fa-lg"></a></td>
 								<td><a href="http://<?=$config_url?>/admin/index.php?com=advertise&act=delete&id=<?=$items[$i-1]['id']?>" onclick="if(!confirm('Xác nhận xóa')) return false;"><i class="fa fa-trash-o fa-lg"></a></td>
 							</tr>
@@ -77,6 +85,7 @@
 				{ "bSortable": false },
 				null,
 				{ "bSortable": false },
+                { "bSortable": false },
 				{ "bSortable": false },
 				{ "bSortable": false },
 				{ "bSortable": false },

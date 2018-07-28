@@ -2,7 +2,7 @@
 tinyMCE.init({
 	// General options
 	mode : "exact",
-    elements : "contact,footer,certificate_quality",
+    elements : "contact,footer,about",
 	theme : "advanced",
 	convert_urls : false,
 	plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,imagemanager,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,visualblocks",
@@ -61,11 +61,38 @@ tinyMCE.init({
 			
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane fade in active" id="vi">
+<!--                    <div class="panel panel-default">-->
+<!--                        <div class="panel-heading">Thay đổi tên các từ khóa trang chủ</div>-->
+<!--                        <div class="panel-body">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-lg-12">-->
+<!--                                    <div class="form-group row">-->
+<!--                                        <div class="col-lg-2"><b>Popular News.</b></div>-->
+<!--                                        <div class="col-lg-8"><input type="text" name="mainkey['popular_news']" class="form-control" value="--><?//=$item['mainkey[\'popular_news\']']?><!--" /></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!---->
+<!--                                <div class="col-lg-12">-->
+<!--                                    <div class="form-group row">-->
+<!--                                        <div class="col-lg-2"><b>Hot News.</b></div>-->
+<!--                                        <div class="col-lg-8"><input type="text" name="mainkey['hot_news']" class="form-control" value="--><?//=$item['mainkey[\'hot_news\']']?><!--" /></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
 					<div class="panel panel-default">
 						<div class="panel-heading">Nội dung</div>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
+                                    <div class="form-group row">
+                                        <div class="col-lg-2"><b>Giới thiệu</b></div>
+                                        <div class="col-lg-10">
+                                            <textarea id="about" name="about" rows="5" class="form-control"><?=$item['about']?></textarea>
+                                        </div>
+                                    </div>
 									<div class="form-group row">
 										<div class="col-lg-2"><b>Liên hệ</b></div>
 										<div class="col-lg-10">
@@ -76,12 +103,6 @@ tinyMCE.init({
 										<div class="col-lg-2"><b>Footer</b></div>
 										<div class="col-lg-10">
         									<textarea id="footer" name="footer" rows="5" class="form-control"><?=$item['footer']?></textarea>
-        								</div>
-									</div>
-                                    <div class="form-group row">
-										<div class="col-lg-2"><b>Chứng chỉ chất lượng</b></div>
-										<div class="col-lg-10">
-        									<textarea id="certificate_quality" name="certificate_quality" rows="5" class="form-control"><?=$item['certificate_quality']?></textarea>
         								</div>
 									</div>
 								</div>

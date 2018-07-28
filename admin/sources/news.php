@@ -630,7 +630,7 @@ function save_photo(){
             $data['thumb'] = create_thumb($data['photo'], _news_size_1_w, _news_size_1_h, _upload_news,$name.'_'.time()._news_size_1_w.'x'._news_size_1_h,1);
             $data['thumb1'] = create_thumb($data['photo'], _news_size_2_w, _news_size_2_h, _upload_news,$name.'_'.time()._news_size_2_w.'x'._news_size_2_h,1);
             $data['thumb2'] = create_thumb($data['photo'], _news_size_3_w, _news_size_3_h, _upload_news,$name.'_'.time()._news_size_3_w.'x'._news_size_3_h,1);
-            $data['thumb3'] = create_thumb($data['photo'], _news_size_4_w, _news_size_4_h, _upload_news,$name.'_'.time()._news_size_4_w.'x'._news_size_4_h."_".$i,1);
+            $data['thumb3'] = create_thumb($data['photo'], _news_size_4_w, _news_size_4_h, _upload_news,$name.'_'.time()._news_size_4_w.'x'._news_size_4_h,1);
 
             $d->setTable('news_photo');
             $d->setWhere('id', $id);
@@ -755,6 +755,6 @@ function countPhoto($id=0){
     global $d;
     $sql = "select id from #_news_photo where id_news=$id and shows<>0";
     $result=$d->query($sql);
-    return mysqli_num_rows($result);
+    return mysql_num_rows($result);
 }
 ?>

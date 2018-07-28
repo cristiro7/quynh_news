@@ -1,31 +1,7 @@
 <?php
     $com = (isset($_REQUEST['com'])) ? addslashes($_REQUEST['com']) : "";
     $act = (isset($_REQUEST['act'])) ? addslashes($_REQUEST['act']) : "";
-    $d = new database($config['database']);
-
-    // Get setting
-    $sql = "select * from #_setting limit 0,1";
-    $d->query($sql);
-    $setting= $d->fetch_array();
-
-    // Get other info
-    $sql = "select * from #_info limit 0,1";
-    $d->query($sql);
-    $info = $d->fetch_array();
-
-    // Set lang
-    $lang = $setting['lang'];
-    $lang_arr = array("vi", "en");
-    if (isset($_GET['lang']) == true) {
-        if (in_array($_GET['lang'], $lang_arr) == true) {
-            $lang = $_GET['lang'];
-        }
-    }
-
-    // Set SEO
-    $title = $setting['title_' . $lang];
-    $description = $setting['description_' . $lang];
-    $keywords = $setting['keywords_' . $lang];
+    $idl = (isset($_REQUEST['idl'])) ? addslashes($_REQUEST['idl']) : "";
 
     switch ($com) {
         case 'lien-he':

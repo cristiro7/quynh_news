@@ -760,7 +760,7 @@ input.post-comment:hover{
 	background: -o-linear-gradient(top, #bc393a, #ee6c6d);/* Opera 11.10+ */ 
 	background-color:#555;
 }
-a.send{
+a.send, input.send{
 	padding:10px 15px;
 	cursor:pointer;
 	color:#FFF;
@@ -827,11 +827,12 @@ a.send:hover{
 	float:left;
 	margin-bottom:10px;
 }
-.pager ul li a{
+.pager ul li a,
+.pager a{
 	padding:3px 10px 4px 10px;
 	margin:0 5px 0 0;
 	color:#696969;
-	display:block;
+	display:inline-block;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e2e2e2), to(#c9c9c9)); /* Safari 4-5, Chrome 1-9 */ 
 	background: -webkit-linear-gradient(top, #e2e2e2, #c9c9c9);/* Safari 5.1, Chrome 10+ */  
 	background: -moz-linear-gradient(top, #e2e2e2, #c9c9c9); /* Firefox 3.6+ */ 
@@ -839,7 +840,8 @@ a.send:hover{
 	background: -o-linear-gradient(top, #e2e2e2, #c9c9c9);/* Opera 11.10+ */ 
 	background-color:#555;
 }
-.pager ul li a:hover{
+.pager ul li a:hover,
+.pager a:hover{
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ee6c6d), to(#bc393a)); /* Safari 4-5, Chrome 1-9 */ 
 	background: -webkit-linear-gradient(top, #ee6c6d, #bc393a);/* Safari 5.1, Chrome 10+ */  
 	background: -moz-linear-gradient(top, #ee6c6d, #bc393a); /* Firefox 3.6+ */ 
@@ -849,7 +851,8 @@ a.send:hover{
 	color:#fff;
 	text-decoration:none;
 }
-.pager ul li a.active{
+.pager ul li a.active,
+.pager a.active{
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ee6c6d), to(#bc393a)); /* Safari 4-5, Chrome 1-9 */ 
 	background: -webkit-linear-gradient(top, #ee6c6d, #bc393a);/* Safari 5.1, Chrome 10+ */  
 	background: -moz-linear-gradient(top, #ee6c6d, #bc393a); /* Firefox 3.6+ */ 
@@ -858,7 +861,7 @@ a.send:hover{
 	background-color:#ea4748;
 	color:#fff;
 }
-.pager ul li a.first-page{
+.pager ul li a.first-page {
 	background:#6c6c6c url(../img/slider-nav2.png) no-repeat center;
 	background-position:8px 8px;
 	padding:0;

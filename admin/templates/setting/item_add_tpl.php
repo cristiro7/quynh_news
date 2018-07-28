@@ -65,7 +65,18 @@
 										<div class="col-lg-2"><b>Geo Meta Tags</b></div>
 										<div class="col-lg-8"><textarea name="geos" rows="3" class="form-control"><?=$item['geos']?></textarea></div>
 									</div>
-									
+                                    <div class="form-group row">
+                                        <div class="col-lg-2"><b>Vimeo Video</b></div>
+                                        <div class="col-lg-8"><input type="text" name="vimeo_video" value="<?=$item['vimeo_video']?>" class="form-control" /></div>
+                                    </div>
+                                    <?php if ($item['vimeo_video']) { ?>
+                                    <div class="form-group row">
+                                        <div class="col-lg-2"></div>
+                                        <div class="col-lg-8">
+                                            <iframe src="http://player.vimeo.com/video/<?=$item['vimeo_video']?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="300px" height="170px" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
 								</div>
 							</div>
 						</div>
@@ -76,15 +87,14 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-lg-12">
-									
 									<div class="form-group row">
 										<div class="col-lg-2"><b>Logo + Banner</b></div>
 										<div class="col-lg-4">
-											<?php if($item['logo']!=NULL) {echo '<img src="http://'.$config_url.'/'._upload_hinhanh_l.$item['logo'].'" width="300" />';}?>
+											<?php if($item['logo']!=NULL) {echo '<img src="http://'.$config_url.'/'._upload_hinhanh_l.$item['logo'].'" width="100" />';}?>
 											<input type="file" name="logo" />
 										</div>
 										<div class="col-lg-4"><?php print _news_type; ?></div>
-										<div class="col-lg-2">(314 x 124px)</div>
+										<div class="col-lg-2">(102 x 23px)</div>
 									</div>
 									
 									<div class="form-group row">

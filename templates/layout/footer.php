@@ -1,3 +1,9 @@
+<?php
+    // Get news list
+    $sql = "select id, ten_$lang as ten, tenkodau from #_news_list where shows=1 and shows_footer=1 order by numberic asc,id desc";
+    $d->query($sql);
+    $news_list_footer = $d->result_array();
+?>
 <div class="container">
     <div class="column-one-fourth">
         <h5 class="line"><span>Tweets.</span></h5>
@@ -6,24 +12,18 @@
     <div class="column-one-fourth">
         <h5 class="line"><span>Navigation.</span></h5>
         <ul class="footnav">
-            <li><a href="#"><i class="icon-right-open"></i> World.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Business.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Politics.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Sports.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Health.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Sciences.</a></li>
-            <li><a href="#"><i class="icon-right-open"></i> Spotlight.</a></li>
+            <?php foreach ($news_list_footer as $new_list_footer) { ?>
+            <li><a href="http://<?=$config_url.'/tin-tuc/'.$new_list_footer['tenkodau']?>/"><i class="icon-right-open"></i><?=$new_list_footer['ten']?></a></li>
+            <?php } ?>
         </ul>
     </div>
     <div class="column-one-fourth">
         <h5 class="line"><span>Flickr Stream.</span></h5>
-        <div class="flickrfeed">
-            <ul id="basicuse" class="thumbs"><li class="hide"></li></ul>
-        </div>
+
     </div>
     <div class="column-one-fourth">
         <h5 class="line"><span>About.</span></h5>
-        <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhon cus sem purus eu sapien. Lorem ipsum dolor sit amet adipcising elit. Elit norem simuls tortor lorem adipcising purus mosteu dsapien egestas.</p>
+        <div><?=$info['about']?></div>
     </div>
-    <p class="copyright">Copyright 2013. All Rights Reserved</p>
+    <p class="copyright">Copyright 2018. All Rights Reserved</p>
 </div>

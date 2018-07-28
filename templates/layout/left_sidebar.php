@@ -1,23 +1,25 @@
 <?php
+    // Get advertise block1
     $d->reset();
-	$sql = "select id,ten_$lang as ten, tenkodau from #_product_list where shows=1 order by numberic asc, id desc";
+	$sql = "select id, ten_$lang as ten, link, alt, photo from #_advertise where shows=1 and shows_single=0 order by numberic asc, id desc";
 	$d->query($sql);
-	$lproducts_menu = $d->result_array();
-    	
+	$advertises_sidebar_block1 = $d->result_array();
+
+    // Get advertise block2
     $d->reset();
-	$sql = "select id,ten_$lang as ten, tenkodau, mota_$lang as mota, price, sale, unit, thumb1, alt from #_product where shows=1 and shows_top=1 order by numberic asc,id desc";
-	$d->query($sql);
-	$lproducts = $d->result_array();
-    
-    $d->reset();
-	$sql = "select id,ten_$lang as ten, tenkodau from #_courses where shows=1 and shows_popup=1 order by numberic asc,id desc";
-	$d->query($sql);
-	$lcourses = $d->result_array();
-    
-    $d->reset();
-	$sql = "select id,ten_$lang as ten, tenkodau from #_farm where shows=1 order by numberic asc,id desc";
-	$d->query($sql);
-	$lfarms = $d->result_array();
+    $sql = "select id, ten_$lang as ten, link, alt, photo from #_advertise where shows=1 and shows_single=1 order by numberic asc, id desc limit 0,1";
+    $d->query($sql);
+    $advertise_sidebar_block2 = $d->fetch_array();
+
+    // Get news hot
+    $sql = "select id, ten_$lang as ten, tenkodau, date_create from #_news where shows=1 and shows_hot=1 order by numberic asc,id desc limit 0,4";
+    $d->query($sql);
+    $news_hot_sidebar = $d->result_array();
+
+    // Get news popular
+    $sql = "select id, ten_$lang as ten, tenkodau, date_create from #_news where shows=1 and shows_popular=1 order by numberic asc,id desc limit 0,4";
+    $d->query($sql);
+    $news_popular_sidebar = $d->result_array();
 ?>
 <div class="sidebar">
     <h5 class="line"><span>Stay Connected.</span></h5>
@@ -39,129 +41,58 @@
 
 <div class="sidebar">
     <h5 class="line"><span>Vimeo Video.</span></h5>
-    <iframe src="http://player.vimeo.com/video/65110834?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="300px" height="170px" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    <iframe src="http://player.vimeo.com/video/<?=$setting['vimeo_video']?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="300px" height="170px" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 <div class="sidebar">
     <h5 class="line"><span>Ads Spot.</span></h5>
     <ul class="ads125">
-        <li><a href="#"><img src="img/banner/3.png" alt="MyPassion" /></a></li>
-        <li><a href="#"><img src="img/banner/1.png" alt="MyPassion" /></a></li>
-        <li><a href="#"><img src="img/banner/2.png" alt="MyPassion" /></a></li>
-        <li><a href="#"><img src="img/banner/4.png" alt="MyPassion" /></a></li>
+        <?php foreach ($advertises_sidebar_block1 as $advertise_sidebar_block1) { ?>
+        <li><a href="<?=$advertise_sidebar_block1['link']?>"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$advertise_sidebar_block1['photo']?>" alt="<?=$advertise_sidebar_block1['alt']?>" /></a></li>
+        <?php } ?>
     </ul>
 </div>
 
 <div class="sidebar">
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabs1">Recent.</a></li>
-            <li><a href="#tabs2">Popular.</a></li>
-            <li><a href="#tabs3">Comments.</a></li>
-        </ul>
-        <div id="tabs1">
-            <ul>
-                <li>
-                    <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                    <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                    <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                    <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Blandit Rutrum, Erat et Sagittis Adipcising Elit.</a>
-                    <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-            </ul>
-        </div>
-        <div id="tabs2">
-            <ul>
-                <li>
-                    <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                    <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                    <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                    <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-                <li>
-                    <a href="#" class="title">Mauris eleifend est et turpis. Duis id erat.</a>
-                    <span class="meta">27 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-                    <span class="rating"><span style="width:70%;"></span></span>
-                </li>
-            </ul>
-        </div>
-        <div id="tabs3">
-            <ul>
-                <li>
-                    <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                </li>
-                <li>
-                    <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                </li>
-                <li>
-                    <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                </li>
-                <li>
-                    <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                </li>
-                <li>
-                    <a href="#" class="title"><strong>Someone:</strong> eleifend est et turpis. Duis id erat.Mauris eleifend est et turpis. Duis id erat.</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<!--    <div id="tabs">-->
+<!--        <ul>-->
+<!--            <li><a href="#tabs1">Hot.</a></li>-->
+<!--            <li><a href="#tabs2">Popular.</a></li>-->
+<!--            <li><a href="#tabs3">Comments.</a></li>-->
+<!--        </ul>-->
+<!--        <div id="tabs1">-->
+<!--            <ul>-->
+<!--                --><?php //foreach ($news_hot_sidebar as $new_hot_sidebar) { ?>
+<!--                <li>-->
+<!--                    <a href="http://--><?//=$config_url.'/tin-tuc/'.$new_hot_sidebar['tenkodau']?><!--.html" class="title">--><?//=$new_hot_sidebar['ten']?><!--</a>-->
+<!--                    <span class="meta">--><?php //echo date('d M, Y', $new_hot_sidebar['date_create']); ?><!--</span>-->
+<!--<!--                    <span class="rating"><span style="width:70%;"></span></span>-->-->
+<!--                </li>-->
+<!--                --><?php //} ?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div id="tabs2">-->
+<!--            <ul>-->
+<!--                --><?php //foreach ($news_popular_sidebar as $new_popular_sidebar) { ?>
+<!--                    <li>-->
+<!--                        <a href="http://--><?//=$config_url.'/tin-tuc/'.$new_popular_sidebar['tenkodau']?><!--.html" class="title">--><?//=$new_popular_sidebar['ten']?><!--</a>-->
+<!--                        <span class="meta">--><?php //echo date('d M, Y', $new_popular_sidebar['date_create']); ?><!--</span>-->
+<!--                        <!--                    <span class="rating"><span style="width:70%;"></span></span>-->-->
+<!--                    </li>-->
+<!--                --><?php //} ?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
-<div class="sidebar">
-    <h5 class="line"><span>Accordion.</span></h5>
-    <div id="accordion">
-
-        <h3>Poserue Clubre.</h3>
-        <div>
-            <p>Vestibulum tempor feugiat est in posuere. Sed auctor libero augue, a faucibus turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices. posuere.</p>
-        </div>
-
-        <h3>Lubelia Mest.</h3>
-        <div>
-            <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.</p>
-        </div>
-
-        <h3>Tincidunt Massa.</h3>
-        <div>
-            <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac liberoac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.</p>
-        </div>
-
-        <h3>Quisque lobortis.</h3>
-        <div>
-            <p>Cras dictum. Pellentesque habitant morbi tristique senectus et netuset malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.</p>
-        </div>
-
-    </div>
-</div>
-
+<?php if (!empty($advertise_sidebar_block2)) { ?>
 <div class="sidebar">
     <h5 class="line"><span>Ads Spot.</span></h5>
-    <a href="#"><img src="img/tf_300x250_v1.gif" alt="MyPassion" /></a>
+    <a href="<?=$advertise_sidebar_block2['link']?>"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$advertise_sidebar_block2['photo']?>" alt="<?=$advertise_sidebar_block2['alt']?>" /></a>
 </div>
+<?php } ?>
 
 <div class="sidebar">
     <h5 class="line"><span>Facebook.</span></h5>
-    <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fenvato&amp;width=298&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23BCBCBC&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:298px; height:258px;" allowTransparency="true"></iframe>
+    <iframe src="http://www.facebook.com/plugins/likebox.php?href=<?=$setting['fanpage']?>&amp;width=298&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23BCBCBC&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:298px; height:258px;" allowTransparency="true"></iframe>
 </div>

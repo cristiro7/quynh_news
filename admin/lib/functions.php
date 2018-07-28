@@ -9,6 +9,17 @@ function summary($str, $limit=100, $strip = false) {
     return trim($str);
 }
 
+function getThumbNews($id_news) {
+    global $d;
+    $news_thumb_related = [];
+    // Get related news photo.
+    $sql = "select thumb1, alt from #_news_photo where id_news=$id_news and shows=1 order by numberic asc,id desc";
+    $d->query($sql);
+    $news_thumb_related = $d->result_array();
+
+    return $news_thumb_related;
+}
+
 function getSlogan($str){
 	$str = explode(',',$str);
 	$slogan = '<div id="slogan"><ul>';
@@ -360,7 +371,7 @@ function paging_home($r, $url='', $curPg=1, $mxR=5, $maxP=5, $class_paging='')
         $_SESSION['curPage']=$curPg;
 
         $r2=array();
-        $paging="";
+        $paging="<ul>";
         $paging1="";
 
         //-------------tao array------------------
@@ -398,6 +409,8 @@ function paging_home($r, $url='', $curPg=1, $mxR=5, $maxP=5, $class_paging='')
 			$paging .="<a href='".$url."p=".($curPg+1)."' class=\"next transitionAll\" ><i class=\"fa fa-angle-right\"></i></a>"; //ke
 
 			$paging .="<a href='".$url."p=".($totalPages)."' class=\"next-all transitionAll\" ><i class=\"fa fa-angle-double-right\"></i></a>"; //ve cuoi
+
+			$paging .= "</ul>";
         }
 
         $r3['curPage']=$curPg;
@@ -737,9 +750,6 @@ function getWidget($catData, $prentsID=0) {
 
    if (array_key_exists($prentsID, $catData)) {
       foreach($catData[$prentsID] as $subID => $subName) {
-
-
-
 		 $result = mysql_query("SELECT id,photo FROM table_product_widget where id='".$subID."'");
 		 $img = mysql_fetch_array($result);
 		 if($prentsID!=0){
@@ -757,7 +767,6 @@ function getWidget($catData, $prentsID=0) {
 
 		 if($prentsID==0){ $catList .= '</ul></div></div>';}
       }
-
    }
 
    return $catList;
