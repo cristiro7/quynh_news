@@ -12,9 +12,9 @@
         </div>
 
         <div class="search">
-            <form action="#" method="post">
-                <input type="text" value="Search." onblur="if(this.value=='') this.value='Search.';" onfocus="if(this.value=='Search.') this.value='';" class="ft"/>
-                <input type="submit" value="" class="fs">
+            <form id="frm_header_search" action="http://<?=$config_url?>/tim-kiem/" method="get">
+                <input type="text" name="keyword" id="keyword" value="<?php echo isset($_GET['keyword']) ? $_GET['keyword'] : ''; ?>" placeholder="<?=_search?>" class="ft"/>
+                <input type="button" id="btn_search" value="" class="fs">
             </form>
         </div>
 

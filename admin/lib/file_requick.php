@@ -12,10 +12,6 @@
             $source = "about";
             $template = "about_detail";
             break;
-        case 'chung-chi-chat-luong':
-            $source = "";
-            $template = "certificate_quality_detail";
-            break;
         case 'tin-tuc':
             $source = "news";
             $template = isset($_GET['id']) ? "news_detail" : "news";
@@ -31,14 +27,6 @@
         case 'san-pham-moi':
             $source = "product_new";
             $template = "product_new";
-            break;
-        case 'san-pham-ban-chay':
-            $source = "product_top";
-            $template = "product_top";
-            break;
-        case 'san-pham-ua-chuong':
-            $source = "product_like";
-            $template = "product_like";
             break;
         case 'tim-kiem':
             $source = "search";

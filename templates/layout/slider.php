@@ -13,7 +13,7 @@
 <div class="container">
     <div class="main-slider">
         <div class="badg">
-            <p><a href="#">Popular.</a></p>
+            <p><a href="#"><?=_popular?></a></p>
         </div>
         <div class="flexslider">
             <ul class="slides">
@@ -30,7 +30,7 @@
     <?php if (count($news_slide) == 3) { ?>
     <div class="slider2">
         <div class="badg">
-            <p><a href="#">Latest.</a></p>
+            <p><a href="#"><?=_latest?></a></p>
         </div>
         <a href="http://<?=$config_url.'/tin-tuc/'.$news_slide[0]['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$news_slide[0]['thumb2']?>" alt="<?=$news_slide[0]['alt']?>" /></a>
         <p class="caption"><a href="http://<?=$config_url.'/tin-tuc/'.$news_slide[0]['tenkodau']?>.html"><?=$news_slide[0]['ten']?></a> <?=summary($news_slide[0]['mota'], 60)?></p>
