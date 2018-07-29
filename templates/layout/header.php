@@ -8,7 +8,7 @@
 <div class="container">
     <div class="column">
         <div class="logo">
-            <a href="index.html"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$setting['logo']?>" alt="<?=$setting['ten_'.$lang]?>" /></a>
+            <a href="http://<?=$config_url?>/"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$setting['logo']?>" alt="<?=$setting['ten_'.$lang]?>" /></a>
         </div>
 
         <div class="search">

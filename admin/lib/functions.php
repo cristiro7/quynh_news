@@ -13,7 +13,7 @@ function getThumbNews($id_news) {
     global $d;
     $news_thumb_related = [];
     // Get related news photo.
-    $sql = "select thumb1, alt from #_news_photo where id_news=$id_news and shows=1 order by numberic asc,id desc";
+    $sql = "select thumb1, thumb2, thumb3, alt from #_news_photo where id_news=$id_news and shows=1 order by numberic asc,id desc";
     $d->query($sql);
     $news_thumb_related = $d->result_array();
 
@@ -394,21 +394,21 @@ function paging_home($r, $url='', $curPg=1, $mxR=5, $maxP=5, $class_paging='')
 
 			for($j = $from; $j <= $to; $j++) {
 			   if ($j == $curPg){
-				   $paging1 .= " <span>".$j."</span> ";
+				   $paging1 .= "<li><a class=\"active\" href='".$url."p=".$j."'>".$j."</a></li>";
 			   }
 			   else{
-                   $paging1 .= "<a class=\"numberic transitionAll\" href='".$url."p=".$j."'>".$j."</a>";
+                   $paging1 .= "<li><a href='".$url."p=".$j."'>".$j."</a></li>";
 			   }
 			}
-			$paging .="<a href='".$url."' class=\"prev-all transitionAll\" ><i class=\"fa fa-angle-double-left\"></i></a>"; //ve dau
+			$paging .="<li><a href='".$url."' class=\"first-page\" ></a></li>"; //ve dau
 
-			$paging .="<a href='".$url."p=".($curPg-1)."' class=\"prev transitionAll\" ><i class=\"fa fa-angle-left\"></i></a>"; //ve truoc
+			//$paging .="<li><a href='".$url."p=".($curPg-1)."' class=\"next transitionAll\" ><i class=\"fa fa-angle-right\"></i></a</li>"; //ve truoc
 
 			$paging.=$paging1;
 
-			$paging .="<a href='".$url."p=".($curPg+1)."' class=\"next transitionAll\" ><i class=\"fa fa-angle-right\"></i></a>"; //ke
+			//$paging .="<li><a href='".$url."p=".($curPg+1)."' class=\"next transitionAll\" ><i class=\"fa fa-angle-right\"></i></a></li>"; //ke
 
-			$paging .="<a href='".$url."p=".($totalPages)."' class=\"next-all transitionAll\" ><i class=\"fa fa-angle-double-right\"></i></a>"; //ve cuoi
+			$paging .="<li><a href='".$url."p=".($totalPages)."' class=\"last-page\" ></a></li>"; //ve cuoi
 
 			$paging .= "</ul>";
         }

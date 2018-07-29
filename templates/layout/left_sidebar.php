@@ -22,7 +22,7 @@
     $news_popular_sidebar = $d->result_array();
 ?>
 <div class="sidebar">
-    <h5 class="line"><span>Stay Connected.</span></h5>
+    <h5 class="line"><span><?=_stay_connected?></span></h5>
     <ul class="social">
         <li>
             <a href="#" class="facebook"><i class="icon-facebook"></i></a>
@@ -40,12 +40,12 @@
 </div>
 
 <div class="sidebar">
-    <h5 class="line"><span>Vimeo Video.</span></h5>
+    <h5 class="line"><span><?=_vimeo_video?></span></h5>
     <iframe src="http://player.vimeo.com/video/<?=$setting['vimeo_video']?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="300px" height="170px" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 </div>
 
 <div class="sidebar">
-    <h5 class="line"><span>Ads Spot.</span></h5>
+    <h5 class="line"><span><?=_ads_spot?></span></h5>
     <ul class="ads125">
         <?php foreach ($advertises_sidebar_block1 as $advertise_sidebar_block1) { ?>
         <li><a href="<?=$advertise_sidebar_block1['link']?>"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$advertise_sidebar_block1['photo']?>" alt="<?=$advertise_sidebar_block1['alt']?>" /></a></li>
@@ -56,9 +56,8 @@
 <div class="sidebar">
 <!--    <div id="tabs">-->
 <!--        <ul>-->
-<!--            <li><a href="#tabs1">Hot.</a></li>-->
-<!--            <li><a href="#tabs2">Popular.</a></li>-->
-<!--            <li><a href="#tabs3">Comments.</a></li>-->
+<!--            <li><a href="#tabs1"><?=_hot?></a></li>-->
+<!--            <li><a href="#tabs2"><?=_popular?></a></li>-->
 <!--        </ul>-->
 <!--        <div id="tabs1">-->
 <!--            <ul>-->
@@ -87,12 +86,12 @@
 
 <?php if (!empty($advertise_sidebar_block2)) { ?>
 <div class="sidebar">
-    <h5 class="line"><span>Ads Spot.</span></h5>
+    <h5 class="line"><span><?=_ads_spot?></span></h5>
     <a href="<?=$advertise_sidebar_block2['link']?>"><img src="http://<?=$config_url.'/'._upload_hinhanh_l.$advertise_sidebar_block2['photo']?>" alt="<?=$advertise_sidebar_block2['alt']?>" /></a>
 </div>
 <?php } ?>
 
 <div class="sidebar">
-    <h5 class="line"><span>Facebook.</span></h5>
+    <h5 class="line"><span><?=_facebook?></span></h5>
     <iframe src="http://www.facebook.com/plugins/likebox.php?href=<?=$setting['fanpage']?>&amp;width=298&amp;height=258&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23BCBCBC&amp;header=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:298px; height:258px;" allowTransparency="true"></iframe>
 </div>

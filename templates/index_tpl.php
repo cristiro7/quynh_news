@@ -1,6 +1,6 @@
 <!-- Popular News -->
 <div class="column-one-third">
-    <h5 class="line"><span>Popular News.</span></h5>
+    <h5 class="line"><span><?=_popular_news?></span></h5>
     <div class="outertight">
         <ul class="block">
             <?php foreach ($news_popular as $new_popular) { ?>
@@ -21,7 +21,7 @@
 
 <!-- Hot News -->
 <div class="column-one-third">
-    <h5 class="line"><span>Hot News.</span></h5>
+    <h5 class="line"><span><?=_hot_news?></span></h5>
     <div class="outertight m-r-no">
         <ul class="block">
             <?php foreach ($news_hot as $new_hot) { ?>
@@ -43,7 +43,7 @@
 <!-- Life Style -->
 <div class="column-two-third">
     <h5 class="line">
-        <span>Life Style.</span>
+        <span><?=_life_style?></span>
         <div class="navbar">
             <a id="next1" class="next" href="#"><span></span></a>
             <a id="prev1" class="prev" href="#"><span></span></a>
@@ -79,7 +79,7 @@
 <!-- World News -->
 <div class="column-two-third">
     <h5 class="line">
-        <span>World News.</span>
+        <span><?=_world_news?></span>
         <div class="navbar">
             <a id="next2" class="next" href="#"><span></span></a>
             <a id="prev2" class="prev" href="#"><span></span></a>
@@ -119,7 +119,7 @@
 <!-- Popular News -->
 <div class="column-two-third">
     <div class="outertight">
-        <h5 class="line"><span>Business News.</span></h5>
+        <h5 class="line"><span><?=_business_news?></span></h5>
 
         <div class="outertight m-r-no">
             <div class="flexslider">
@@ -137,11 +137,9 @@
                 </ul>
             </div>
 
-            <h6 class="regular"><a href="#">Blandit Rutrum, Erat et Sagittis. Lorem
-                    Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-            <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-            <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic. Lorem ipsum
-                dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor libero tempor...</p>
+            <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$news_of_business_list[0]['tenkodau']?>.html"><?=$news_of_business_list[0]['ten']?></a></h6>
+            <span class="meta"><?php echo date('d M, Y', $news_of_business_list[0]['date_create']); ?>.</span>
+            <p><?=summary($news_of_business_list[0]['mota'], 200)?>...</p>
         </div>
 
         <ul class="block">
@@ -161,28 +159,27 @@
     </div>
 
     <div class="outertight m-r-no">
-        <h5 class="line"><span>Sport News.</span></h5>
+        <h5 class="line"><span><?=_sport_news?></span></h5>
 
         <div class="outertight m-r-no">
             <div class="flexslider">
                 <ul class="slides">
                     <li>
-                        <img src="img/trash/27.png" alt="MyPassion" />
+                        <img src="http://<?=$config_url.'/'._upload_news_l.$news_of_sport_list[0]['thumb1']?>" alt="<?=$news_of_sport_list[0]['alt']?>" />
                     </li>
-                    <li>
-                        <img src="img/trash/26.png" alt="MyPassion" />
-                    </li>
-                    <li>
-                        <img src="img/trash/24.png" alt="MyPassion" />
-                    </li>
+                    <?php if (!empty($news_thumb_related = getThumbNews($news_of_sport_list[0]['id']))) {
+                        foreach ($news_thumb_related as $new_thumb_related) {
+                    ?>
+                        <li>
+                            <img src="http://<?=$config_url.'/'._upload_news_l.$new_thumb_related['thumb1']?>" alt="<?=$new_thumb_related['alt']?>" />
+                        </li>
+                    <?php } } ?>
                 </ul>
             </div>
 
-            <h6 class="regular"><a href="#">Blandit Rutrum, Erat et Sagittis. Lorem
-                    Ipsum Dolor, Sit Amet Adipsing.</a></h6>
-            <span class="meta">26 May, 2013.   \\   <a href="#">World News.</a>   \\   <a href="#">No Coments.</a></span>
-            <p>Blandit rutrum, erat et egestas ultricies, dolor tortor egestas enim, quiste rhoncus sem purus eu sapien. Curabitur a orci nec risus lacinia vehic. Lorem ipsum
-                dolor adipcising elit. Erat egestan sagittis lorem aupo dolor sit ameta, auctor libero tempor...</p>
+            <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$news_of_sport_list[0]['tenkodau']?>.html"><?=$news_of_sport_list[0]['ten']?></a></h6>
+            <span class="meta"><?php echo date('d M, Y', $news_of_sport_list[0]['date_create']); ?>.</span>
+            <p><?=summary($news_of_sport_list[0]['mota'], 200)?>...</p>
         </div>
 
         <ul class="block">

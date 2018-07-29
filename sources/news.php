@@ -1,6 +1,6 @@
 <?php  if(!defined('_source')) die("Error");
 	
-	$title = 'Tin tức - '.$setting['title_'.$lang];
+	$title = _news . ' - ' . $setting['title_'.$lang];
     $breadcrumbs = '';
 
     $strList = trim(isset($_GET['idl']) ? $_GET['idl'] : '');
@@ -32,7 +32,7 @@
             $news = $d->result_array();
             $curPage = isset($_GET['p']) ? $_GET['p'] : '1';
             $url = "http://$config_url/tin-tuc/".$urlList;
-            $maxR=4;
+            $maxR=20;
             $maxP=10;
             $paging=paging_home($news, $url, $curPage, $maxR, $maxP);
             $news=$paging['source'];
@@ -42,7 +42,12 @@
 		$d->query($sql_detail);
 		$news_detail = $d->fetch_array();
 
-        $breadcrumbs = "<p><a href='http://" . $config_url . "/'>" . _home . ".</a>      \\   "  . $news_detail['ten'] . "</p>";
+        // Lấy id_list
+        $sql = "select id, ten_$lang as ten , tenkodau from #_news_list where id ='" . $news_detail['id_list'] . "'";
+        $d->query($sql);
+        $news_list = $d->fetch_array();
+
+        $breadcrumbs = "<p><a href='http://" . $config_url . "/'>" . _home . ".</a>   \\   <a href='http://" . $config_url . "/tin-tuc/" . $news_list["tenkodau"] . "/'>" . $news_list['ten'] . ".</a>   \\ "  . $news_detail['ten'] . "</p>";
 		
 		$viewed = $news_detail['viewed']+1;
 		$sql_update = "update #_news SET viewed=$viewed where id=".$news_detail['id'];
@@ -65,7 +70,7 @@
 		$news = $d->result_array();
 				
 	} else {
-		$title_bar = 'Tin tức';
+		$title_bar = _news;
 
 		$sql = "select id, ten_$lang as ten, tenkodau, thumb, thumb1, alt, mota_$lang as mota, date_create from #_news where shows=1 order by numberic asc,id desc";
 		$d->query($sql);
