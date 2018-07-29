@@ -151,5 +151,30 @@
     <?php } ?>
 
     <script type="text/javascript" src="js/mypassion.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('#btn_search').click(function(evt){
+                onSearch(evt);
+            });
+        });
+
+        function onSearch(evt) {
+            var keyword = $('#keyword');
+
+            if (keyword.val() == '') { alert('Bạn chưa nhập thông tin tìm kiếm!'); keyword.focus(); return false; }
+
+            $('#frm_header_search').submit();
+        }
+
+        function doEnter (evt) {
+            var key;
+            if (evt.keyCode == 13 || evt.which == 13){
+                onSearch(evt);
+            }else{
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

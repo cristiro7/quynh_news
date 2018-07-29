@@ -1,82 +1,77 @@
-<div class="breadcrumb clearfix">
-	<a class="home" href="" title="Trang chủ">
-		<i class="fa fa-home"></i>
-	</a>
-	<span class="navigation-pipe">&gt;</span>Sản phẩm
+<div>
+    <?=$title_bar?>
 </div>
 
-<h1 class="page-heading product-listing">
-	<span class="cat-name">Tìm kiếm&nbsp;</span>
-	<span class="heading-counter">Có tất cả <?php print $total_product; ?> sản phẩm</span>
-</h1>
+<!-- Search News -->
+<div class="column-two-third">
+    <?php if (!isset($_GET['p'])) { ?>
+        <div class="outertight m-t-no">
+            <div class="badg">
+                <p><a href="#"><?=_featured?></a></p>
+            </div>
 
-<?php if($total_product > 0) { ?>
-<ul class="product_list grid row">
-	<?php foreach($products as $key => $product) { 
-	  $i = ($key+3)%3;
-      $j = ($key+2)%2;  
-    ?>
-    <li class="ajax_block_product col-xs-12 col-sm-4 col-md-4 <?php print $class_pc_line[$i]; ?> <?php print $class_tablet_line[$j]; ?> <?php print $class_mobile_line[$j]; ?>">
-		<div class="product-container" itemscope itemtype="http://schema.org/Product">
-			<div class="left-block">
-				<div class="product-image-container">
-					<a class="product_img_link" href="san-pham/<?php print $product['tenkodau']; ?>.html" title="<?php print $product['ten']; ?>" itemprop="url">
-						<img class="replace-2x img-responsive" src="http://<?=$config_url.'/'._upload_product_l.$product['thumb2']?>" alt="<?php print $product['alt']; ?>" itemprop="image"/>
-						<!--<img class="img-responsive hover-image" id="thumb-27" src="images/2-sanpham.jpg" alt="<?php print $product['alt']; ?>" itemprop="image"/>-->
-					</a>
-					<!--<a class="quick-view" href="" rel="">
-						<span>Xem nhanh</span>
-					</a>-->
-					<?php if($product['shows_new']) { ?>
-					<a class="new-box" href="">
-						<span class="new-label">New</span>
-					</a>
-                    <?php } ?>
-                    
-                    <?php if($product['shows_sale']) { ?>
-                    <a class="sale-box" href="">
-						<span class="sale-label">Sale!</span>
-					</a>
-                    <?php } ?>
-				</div>
-			</div>
-			<div class="right-block">
-				<h5 itemprop="name">
-					<a class="product-name" href="san-pham/<?php print $product['tenkodau']; ?>.html" title="<?php print $product['ten']; ?>" itemprop="url">
-						<span class="list-name"><?php print $product['ten']; ?></span>
-						<span class="grid-name"><?php print $product['ten']; ?></span>
-					</a>
-				</h5>
-				<p class="product-desc" itemprop="description">
-					<span class="list-desc"><?php print substr($product['mota'],0,strrpos(substr($product['mota'],0,150)," "))?> ...</span>
-					<span class="grid-desc"><?php print substr($product['mota'],0,strrpos(substr($product['mota'],0,150)," "))?> ...</span>
-				</p>
-				<div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="content_price">
-					<span itemprop="price" class="price product-price">
-                    <?php if($product['price'] !=0 && $product['sale'] == 0){
-						    echo number_format($product['price'],0,'','.').' vnđ/'.getUnit($product['unit']);
-					      } elseif($product['sale'] != 0){
-                            $save_price = ($product['price']*$product['sale'])/100;
-							$special_price = $product['price']-$save_price;
-							echo number_format($special_price,0,'','.').' vnđ/'.getUnit($product['unit']);
-						  } else {
-					        echo '<a href="lien-he/">Liên hệ</a>';
-                          }
-                    ?>
-                    </span>
-				</div>
-				<div class="button-container">
-					<a class="ajax_add_to_cart_button btn btn-default" href="" rel="nofollow" title="Mua ngay" data-id-product="6" data-minimal_quantity="1">
-						<span>Mua ngay</span>
-					</a>
-					<a itemprop="url" class="lnk_view btn btn-default" href="san-pham/<?php print $product['tenkodau']; ?>.html" title="Chi tiết">
-						<span>Chi tiết</span>
-					</a>
-				</div>
-			</div>
-		</div> 
-	</li>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="http://<?=$config_url.'/'._upload_news_l.$news[0]['thumb1']?>" alt="<?=$news[0]['alt']?>" />
+                    </li>
+                    <?php if (!empty($news_feature1_related = getThumbNews($news[0]['id']))) {
+                        foreach ($news_feature1_related as $new_feature1_related) {
+                            ?>
+                            <li>
+                                <img src="http://<?=$config_url.'/'._upload_news_l.$new_feature1_related['thumb1']?>" alt="<?=$new_feature1_related['alt']?>" />
+                            </li>
+                        <?php } } ?>
+                </ul>
+            </div>
+
+            <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$news[0]['tenkodau']?>.html"><?=$news[0]['ten']?></a></h6>
+            <span class="meta"><?php echo date('d M, Y', $news[0]['date_create']); ?>.</span>
+            <p><?=summary($news[0]['ten'], 200)?>...</p>
+        </div>
+
+        <div class="outertight m-r-no m-t-no">
+            <div class="badg">
+                <p><a href="#"><?=_featured?></a></p>
+            </div>
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="http://<?=$config_url.'/'._upload_news_l.$news[1]['thumb1']?>" alt="<?=$news[1]['alt']?>" />
+                    </li>
+                    <?php if (!empty($news_feature2_related = getThumbNews($news[1]['id']))) {
+                        foreach ($news_feature2_related as $new_feature2_related) {
+                            ?>
+                            <li>
+                                <img src="http://<?=$config_url.'/'._upload_news_l.$new_feature2_related['thumb1']?>" alt="<?=$new_feature2_related['alt']?>" />
+                            </li>
+                        <?php } } ?>
+                </ul>
+            </div>
+
+            <h6 class="regular"><a href="http://<?=$config_url.'/tin-tuc/'.$news[1]['tenkodau']?>.html"><?=$news[1]['ten']?></a></h6>
+            <span class="meta"><?php echo date('d M, Y', $news[1]['date_create']); ?>.</span>
+            <p><?=summary($news[1]['ten'], 200)?>...</p>
+        </div>
     <?php } ?>
-    <div class="col-sm-12 paging"><?=$paging['paging']?></div>
-</ul>
-<?php } ?>
+
+    <div class="outerwide">
+        <ul class="block2">
+            <?php foreach ($news as $key => $new) { ?>
+                <li <?php if (($key%2) != 0) { echo 'class="m-r-no"'; } ?>>
+                    <a href="http://<?=$config_url.'/tin-tuc/'.$new['tenkodau']?>.html"><img src="http://<?=$config_url.'/'._upload_news_l.$new['thumb']?>" alt="<?=$new['alt']?>" class="alignleft" width="140" /></a>
+                    <p>
+                        <span><?php echo date('d M, Y', $new['date_create']); ?>.</span>
+                        <a href="http://<?=$config_url.'/tin-tuc/'.$news[1]['tenkodau']?>.html"><?=$new['ten']?></a>
+                    </p>
+                    <!--                <span class="rating"><span style="width:80%;"></span></span>-->
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+
+    <div class="pager">
+        <?=$paging['paging']?>
+    </div>
+</div>
+<!-- /Search News -->

@@ -3,7 +3,7 @@
     <?php if (!isset($_GET['p'])) { ?>
     <div class="outertight m-t-no">
         <div class="badg">
-            <p><a href="#">Featured.</a></p>
+            <p><a href="#"><?=_featured?></a></p>
         </div>
 
         <div class="flexslider">
@@ -28,7 +28,7 @@
 
     <div class="outertight m-r-no m-t-no">
         <div class="badg">
-            <p><a href="#">Featured.</a></p>
+            <p><a href="#"><?=_featured?></a></p>
         </div>
         <div class="flexslider">
             <ul class="slides">

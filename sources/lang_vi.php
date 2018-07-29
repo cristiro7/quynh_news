@@ -38,6 +38,8 @@
 @define ('_world_news','World News.');
 @define ('_business_news','Business News.');
 @define ('_sport_news','Sport News.');
+@define ('_featured','Featured');
+@define ('_latest','Latest.');
 
 //------------ Footer -----------------
 @define ('_tweet','Tweets.');
@@ -47,7 +49,6 @@
 
 //------------ Detail -----------------
 @define ('_related_news','Related News.');
-@define ('','');
-@define ('','');
+@define ('_found','Found ');
 @define ('','');
 ?>

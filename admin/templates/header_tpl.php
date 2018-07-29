@@ -34,10 +34,10 @@
                     <a href="http://<?= $config_url ?>/" target="_blank"><i class="fa fa-home fa-fw"></i> Website</a>
                 </li>
 
-                <li <?php if ($com == 'about') { echo 'class="active"'; } ?>>
-                    <a href="http://<?= $config_url ?>/admin/index.php?com=about&act=man"
-                        <?php if ($com == 'about') { echo 'class="active"'; } ?> ><i class="fa fa-th-large fa-fw"></i> Giới thiệu</a>
-                </li>
+<!--                <li --><?php //if ($com == 'about') { echo 'class="active"'; } ?><!-->
+<!--                    <a href="http://--><?//= $config_url ?><!--/admin/index.php?com=about&act=man"-->
+<!--                        --><?php //if ($com == 'about') { echo 'class="active"'; } ?><!-- ><i class="fa fa-th-large fa-fw"></i> Giới thiệu</a>-->
+<!--                </li>-->
 
                 <li <?php if ($com == 'news') { echo 'class="active"'; } ?>>
                     <a href="#"><i class="fa fa-newspaper-o fa-fw"></i>Tin tức<span class="fa arrow"></span></a>
@@ -158,10 +158,10 @@
                         <?php if ($com == 'social') { echo 'class="active"'; } ?> ><i class="fa fa-share-alt-square fa-fw"></i>Link chia sẻ</a>
                 </li>
 
-                <li <?php if ($com == 'helper') { echo 'class="active"'; } ?>>
-                    <a href="http://<?= $config_url ?>/admin/index.php?com=helper&act=man"
-                        <?php if ($com == 'helper') { echo 'class="active"'; } ?> ><i class="fa fa-support"></i>Hỗ trợ</a>
-                </li>
+<!--                <li --><?php //if ($com == 'helper') { echo 'class="active"'; } ?><!-->
+<!--                    <a href="http://--><?//= $config_url ?><!--/admin/index.php?com=helper&act=man"-->
+<!--                        --><?php //if ($com == 'helper') { echo 'class="active"'; } ?><!-- ><i class="fa fa-support"></i>Hỗ trợ</a>-->
+<!--                </li>-->
 
                 <li <?php if ($com == 'info') { echo 'class="active"'; } ?>>
                     <a href="http://<?= $config_url ?>/admin/index.php?com=info&act=edit"
